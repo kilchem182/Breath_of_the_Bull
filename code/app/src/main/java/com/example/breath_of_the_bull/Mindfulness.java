@@ -20,4 +20,7 @@ public class Mindfulness extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

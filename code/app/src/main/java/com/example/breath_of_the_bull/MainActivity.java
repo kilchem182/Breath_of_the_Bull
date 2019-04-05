@@ -20,15 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        //listen for meditate button to be pressed, and bring user to meditation session on press
         Button meditate = (Button) findViewById(R.id.meditate);
         meditate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,14 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button mindfulness = (Button) findViewById(R.id.mindfulness);
-        mindfulness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMindfulness();
-            }
-        });
-
+        //listen for quote button to be pressed, and bring user to daily quote activity on press
         Button quote = (Button) findViewById(R.id.quote);
         quote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,16 +39,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //bring user to meditation session screen
     public void openMeditate() {
         Intent intent = new Intent(this, Meditate.class);
         startActivity(intent);
     }
 
-    public void openMindfulness() {
-        Intent intent = new Intent(this, Mindfulness.class);
-        startActivity(intent);
-    }
-
+    //bring user to daily quote screen
     public void openQuote() {
         Intent intent = new Intent(this, Quote.class);
         startActivity(intent);
