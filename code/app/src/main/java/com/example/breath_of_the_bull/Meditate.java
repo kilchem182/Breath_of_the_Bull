@@ -1,12 +1,18 @@
+//Project name: Breath of the Bull
+//Description: Breath of the Bull is an Android mobile application that provides
+//Zen-based support and techniques such as mindfulness exercises, daily quotes
+//from Zen masters, and guided meditation sessions to help alleviate stress and anxiety.
+//Filename: Meditate.java
+//Description: This file manages the meditation session screen
+//Last modified on: 4/24/19
 package com.example.breath_of_the_bull;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class Meditate extends AppCompatActivity {
@@ -41,17 +47,30 @@ public class Meditate extends AppCompatActivity {
         length_text = (TextView) findViewById(R.id.lengthTimer);
         startTimer();
 
-        FloatingActionButton back = (FloatingActionButton) findViewById(R.id.backMed);
+        FloatingActionButton back = (FloatingActionButton) findViewById(R.id.back_med);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //test();
-                finish();
+                openMedFeedback();
             }
         });
     }
 
-    //initialize countdown timer at length parameter
+    public void openMedFeedback() {
+        Intent intent = new Intent(this, MedFeedback.class);
+        startActivity(intent);
+    }
+
+    //----------------------------------------------------------------------------
+    //
+    //Function: startTimer()
+    //
+    //Parameters:
+    //None
+    //
+    //Pre-condition: Page is loaded and duration session parameter is used as start time
+    //Post-condition: Initialize countdown timer at length parameter
+    //-----------------------------------------------------------------------------
     public void startTimer() {
         countDownTimer = new CountDownTimer(time_left, 1000) {
             @Override
@@ -62,12 +81,21 @@ public class Meditate extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                openMedFeedback();
             }
         }.start();
     }
 
-    //update count down timer text field
+    //--------------------------------------------------------------------------------
+    //
+    //Function: updateTimer
+    //
+    //Parameters:
+    //None
+    //
+    //Pre-condition: request to update timer is received
+    //Post-condition: update count down timer text field
+    //---------------------------------------------------------------------------------
     public void updateTimer() {
         int minutes = (int) time_left / 60000;
         int seconds = (int) time_left % 60000 / 1000;
@@ -82,15 +110,4 @@ public class Meditate extends AppCompatActivity {
         time_left_str += seconds;
         length_text.setText(time_left_str);
     }
-/*
-    public void test() {
-        MeditationInfo user = new MeditationInfo("kilchem2", "password");
-
-        String username = user.GetUsername();
-        String password = user.GetPassword();
-
-        Log.i("Username", username);
-        Log.i("Password", password);
-    }
-*/
 }

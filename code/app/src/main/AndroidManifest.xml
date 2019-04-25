@@ -9,19 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Quote"></activity>
-        <activity android:name=".Mindfulness" />
-        <activity android:name=".Meditate" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".Login"
+            android:label="Breath of the Bull">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewUser" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Breath of the Bull"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".Quote" />
+        <activity android:name=".Meditate" />
+        <activity android:name=".MedFeedback" />
     </application>
 
 </manifest>
